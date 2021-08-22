@@ -1,6 +1,6 @@
-import Blog from "../models/blog";
+const Blog = require("../models/blog");
 
-export const getAllBlogs = async (req, res) => {
+const getAllBlogs = async (req, res, next) => {
   try {
     const data = await Blog.find({});
     return res.status(200).json(data);
@@ -9,7 +9,7 @@ export const getAllBlogs = async (req, res) => {
   }
 };
 
-export const getBlog = async (req, res) => {
+const getBlog = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Blog.findById(id);
@@ -19,7 +19,7 @@ export const getBlog = async (req, res) => {
   }
 };
 
-export const createBlog = async (req, res) => {
+const createBlog = async (req, res, next) => {
   try {
     const { title, body } = req.body;
     const blog = new Blog();
@@ -32,7 +32,7 @@ export const createBlog = async (req, res) => {
   }
 };
 
-export const updateBlog = (req, res) => {
+const updateBlog = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { title, body } = req.body;
@@ -43,7 +43,7 @@ export const updateBlog = (req, res) => {
   }
 };
 
-export const deleteBlog = (req, res) => {
+const deleteBlog = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Blog.findByIdAndDelete(id);
@@ -52,3 +52,12 @@ export const deleteBlog = (req, res) => {
     return res.status(500).json(error.message);
   }
 };
+
+
+module.exports = {
+    getAllBlogs, 
+    getBlog, 
+    createBlog, 
+    updateBlog, 
+    deleteBlog
+}

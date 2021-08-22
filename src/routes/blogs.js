@@ -11,8 +11,8 @@ const router = Router();
 
 router.get("/", getAllBlogs);
 router.post("/", createBlog);
-router.patch("/:id", updateBlog);
 router.get("/:id", getBlog);
+router.patch("/:id", updateBlog);
 router.delete("/:id", deleteBlog);
 
 module.exports = router;

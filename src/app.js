@@ -11,13 +11,14 @@ const {
 
 const blogRouter = require("./routes/blogs")
 
-app.use("/", (req, res) => {
-  res.send("<h1 >Docker tutorialllllll!!!!!!!! <h1>");
-});
 app.use(cors());
 app.use(express.json())
 
 app.use("/api/blogs", blogRouter)
+
+app.use("/", (req, res) => {
+  res.send("<h1 >Docker tutorialllllll!!!!!!!! <h1>");
+});
 
 const PORT = process.env.PORT || "3000";
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
