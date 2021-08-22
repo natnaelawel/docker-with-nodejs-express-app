@@ -1,0 +1,22 @@
+version: "3"
+services:
+  node-app:
+    build: 
+      context: . 
+      args: 
+        NODE_ENV: development
+    volumes:
+      # the - siginifies a list
+      - ./:/app
+      - /app/node_modules
+
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=nathaniel
+      - MONGO_PASSWORD=nati1234
+      - MONGO_PORT=27017 
+      - MONGO_IP=mongo 
+      
+    # we can override the code from Dockerfile
+    command: npm run dev
+  

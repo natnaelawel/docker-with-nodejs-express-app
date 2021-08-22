@@ -1,0 +1,1 @@
+* sudo snap connect docker:removable-media

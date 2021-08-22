@@ -1,0 +1,28 @@
+version: "3"
+services: 
+  node-app:
+    # automating docker compose within a current directory
+    build: .
+    ports: 
+      # list of open port 
+      - "3000:3000"
+    
+    environment: 
+      - PORT=3000
+      
+    # the node app will wait until the mongo container has been started 
+    depends_on: 
+      - mongo
+      
+    # env_file: 
+      # - ./.env_file
+  mongo: 
+    image: mongo
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=nathaniel
+      - MONGO_INITDB_ROOT_PASSWORD=nati1234
+    volumes: 
+      - mongo-db:/data/db
+
+volumes: 
+  mongo-db:
