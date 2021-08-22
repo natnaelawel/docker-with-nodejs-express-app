@@ -173,3 +173,11 @@ we can follow the logs using -f command
 
 
 in order to make sure the mongo container started first before the node application we will use the command depends on inside the docker compose under the node app 
+
+
+we can start a specific container from the docker compose with a specific container name
+to start only node mongo
+* docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d mongo
+
+to start only the node app since it has depends on we have to clearly state to not start the linked container using --no-deps flag 
+* docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps node-app
