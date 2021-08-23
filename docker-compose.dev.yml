@@ -16,6 +16,7 @@ services:
       - MONGO_PASSWORD=nati1234
       - MONGO_PORT=27017 
       - MONGO_IP=mongo 
+      - SESSION_SECRET=secret 
       
     # we can override the code from Dockerfile
     command: npm run dev

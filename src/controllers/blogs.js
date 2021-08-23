@@ -36,7 +36,7 @@ const updateBlog = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { title, body } = req.body;
-    const result = await Blog.findByIdAndUpdate(id, { title, body });
+    const result = await Blog.findByIdAndUpdate(id, { title, body }, {new: true, runValidators: true});
     return res.status(201).json(result);
   } catch (error) {
     return res.status(500).json(error.message);

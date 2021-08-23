@@ -181,3 +181,17 @@ to start only node mongo
 
 to start only the node app since it has depends on we have to clearly state to not start the linked container using --no-deps flag 
 * docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps node-app
+
+to prevent up and down of the container we can use only up with additional flag --renew-anon-volumes or -V
+
+* docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V
+
+
+# redis and express session 
+* docker exec -it nodejs-docker-app_redis_1 bash redis-cli
+
+to see lists of data 
+* KEYS *
+
+to see detail using  the session key
+* GET "session key" 
