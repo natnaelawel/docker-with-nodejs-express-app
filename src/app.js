@@ -25,6 +25,9 @@ let redisClient = redis.createClient({
   port: REDIS_PORT,
 });
 
+// just for nginx to set for header in case we want the ip address of the sender which by default nginx get ride
+app.enable("trust proxy")
+
 // redis
 app.use(
   session({
@@ -41,7 +44,7 @@ app.use(
     }, // 30 sec
   })
 );
-app.use(cors());
+app.use(cors({}));
 app.use(express.json());
 
 app.use("/api/v1/blogs", blogRouter);

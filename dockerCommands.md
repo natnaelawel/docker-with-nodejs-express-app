@@ -195,3 +195,15 @@ to see lists of data
 
 to see detail using  the session key
 * GET "session key" 
+
+
+we can scale our node app container using the --scale
+* docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale node-app=2
+
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V --scale node-app=2
+
+
+
+to log in to remote server like ubuntu server via ssh 
+
+ssh root@ipaddress
